@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Medphox</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_care">Care Plan</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_offer">Offers</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

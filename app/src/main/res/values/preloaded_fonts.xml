@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/aldrich</item>
+        <item>@font/allerta</item>
+        <item>@font/archivo_black</item>
+        <item>@font/baloo_bhai</item>
+        <item>@font/cairo_bold</item>
+        <item>@font/teko_medium</item>
+    </array>
+</resources>
