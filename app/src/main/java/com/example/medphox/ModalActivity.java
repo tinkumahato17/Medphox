@@ -1,12 +1,13 @@
 package com.example.medphox;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.medphox.adapter.ImgSlide;
 import com.example.medphox.adapter.SliderImageAdapter;
@@ -23,6 +24,7 @@ public class ModalActivity extends AppCompatActivity {
     private Timer timer;
     private int current_position = 0;
     private List<ImgSlide> imgslide;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,45 +37,43 @@ public class ModalActivity extends AppCompatActivity {
         imgslide.add(new ImgSlide(R.drawable.vec, "helth is most important in your life"));
         imgslide.add(new ImgSlide(R.drawable.vec, "Medphox made with love"));
         imgslide.add(new ImgSlide(R.drawable.vec, "delvery all over India"));
-        sliderpager = (ViewPager)findViewById(R.id.slider_pager);
-        indicator = (TabLayout)findViewById(R.id.indicator);
+        sliderpager = (ViewPager) findViewById(R.id.slider_pager);
+        indicator = (TabLayout) findViewById(R.id.indicator);
+        button = findViewById(R.id.signupbtn);
         SliderImageAdapter adapter = new SliderImageAdapter(getApplicationContext(), imgslide);
         sliderpager.setAdapter(adapter);
         indicator.setupWithViewPager(sliderpager, true);
         createSlideShow();
 
-        getWindow ().setFlags (
+        getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        );getSupportActionBar ().hide ();
-
-
-
-
+        );
+        getSupportActionBar().hide();
+        button.setOnClickListener((v) -> {
+           startActivity(new Intent(this, MainActivity.class));
+        });
 
 
     }
 
-    private void createSlideShow()
-
-
-        {
-            final Handler handler = new Handler();
-            final Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    if (current_position == imgslide.size())
-                        current_position = 0;
-                    sliderpager.setCurrentItem(current_position++, true);
-                }
-            };
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    handler.post(runnable);
-                }
-            }, 250, 2500);
+    private void createSlideShow() {
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (current_position == imgslide.size())
+                    current_position = 0;
+                sliderpager.setCurrentItem(current_position++, true);
+            }
+        };
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(runnable);
+            }
+        }, 250, 2500);
 
 
     }

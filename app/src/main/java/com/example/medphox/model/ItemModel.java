@@ -1,2 +1,10 @@
-package com.example.medphox.model;public class ItemModel {
+package com.example.medphox.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class ItemModel {
+    private String name, price, description;
 }
