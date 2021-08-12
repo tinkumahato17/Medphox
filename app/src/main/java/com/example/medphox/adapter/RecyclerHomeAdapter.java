@@ -1,13 +1,16 @@
 package com.example.medphox.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.medphox.R;
 import com.example.medphox.model.ItemModel;
 
@@ -15,9 +18,11 @@ import java.util.ArrayList;
 
 public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapter.MyViewHolder> {
     ArrayList<ItemModel> list;
+    Context context;
 
-    public RecyclerHomeAdapter(ArrayList<ItemModel> list) {
+    public RecyclerHomeAdapter(ArrayList<ItemModel> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -33,6 +38,7 @@ public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapte
         holder.name.setText(model.getName());
         holder.price.setText(model.getPrice());
         holder.desc.setText(model.getDescription());
+        Glide.with(context).load("https://assets.pharmeasy.in/web-assets/dist/951a8017.png").into(holder.imageView);
     }
 
     @Override
@@ -41,12 +47,14 @@ public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapte
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name,price,desc;
+        TextView name,price, desc;
+        ImageView imageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
             desc = itemView.findViewById(R.id.desc);
+            imageView = itemView.findViewById(R.id.imagelist);
         }
     }
 }
