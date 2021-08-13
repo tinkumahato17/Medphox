@@ -17,8 +17,8 @@ import com.example.medphox.model.ItemModel;
 import java.util.ArrayList;
 
 public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapter.MyViewHolder> {
-    ArrayList<ItemModel> list;
-    Context context;
+    private final ArrayList<ItemModel> list;
+    private final Context context;
 
     public RecyclerHomeAdapter(ArrayList<ItemModel> list, Context context) {
         this.list = list;
@@ -28,7 +28,7 @@ public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -47,8 +47,9 @@ public class RecyclerHomeAdapter extends RecyclerView.Adapter<RecyclerHomeAdapte
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name,price, desc;
+        TextView name, price, desc;
         ImageView imageView;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
