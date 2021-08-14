@@ -7,4 +7,5 @@ import lombok.Setter;
 @Setter
 public class ItemModel {
     private String name, price, description;
+
 }
